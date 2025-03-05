@@ -55,8 +55,12 @@ curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dear
     sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
     sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
 
+THSI FIXED THE ISSUE!!!
 sudo apt-get install -y nvidia-container-toolkit
 nvidia-ctk --version
+
+sudo apt-get install -y nvidia-docker2
+sudo systemctl restart docker
 
 4 INSTALL THE MISSING GPU IMAGE FOR DOCKER TO USE
 CHECK AVAILABLE DOCKER IMGS
