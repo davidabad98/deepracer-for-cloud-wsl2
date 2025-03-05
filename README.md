@@ -1,5 +1,7 @@
 # deepracer-for-cloud-wsl2
 https://github.com/tensorflow/tensorflow/issues/68710
+https://github.com/NVIDIA/nvidia-container-toolkit/issues/520
+
 Guide for running DRfC in Windows WSL2 Ubuntu
 AWS DeepRacer Documentation https://docs.aws.amazon.com/deepracer/
 Installing Deepracer-for-Cloud Documentation: https://aws-deepracer-community.github.io/deepracer-for-cloud/installation.html
@@ -47,6 +49,14 @@ nvcc --version
 CHECK INSTALLED CUDA VERSIONS
 ls /usr/local/ | grep cuda
 
+UPDATE NVIDIA CONTAINER TOOLKIT 
+curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg \
+  && curl -s -L https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list | \
+    sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
+    sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
+
+sudo apt-get install -y nvidia-container-toolkit
+nvidia-ctk --version
 
 4 INSTALL THE MISSING GPU IMAGE FOR DOCKER TO USE
 CHECK AVAILABLE DOCKER IMGS
