@@ -95,8 +95,8 @@ nvidia-smi
 nvcc --version
 ```
 
-Update NVIDIA Container Toolkit
-This is to fix an issue of the awsdeepracercommunity/deepracer-simapp docker container not being able to read the GPU: tensorflow/compiler/xla/stream_executor/cuda/cuda_driver.cc:268] failed call to cuInit: CUDA_ERROR_NOT_FOUND: named symbol not found
+Update NVIDIA Container Toolkit  
+This is to fix an issue of the awsdeepracercommunity/deepracer-simapp docker container not being able to read the GPU: tensorflow/compiler/xla/stream_executor/cuda/cuda_driver.cc:268] failed call to cuInit: CUDA_ERROR_NOT_FOUND: named symbol not found.  
 But this is not directly visible when running DRfC. When doing so, you will get: tensorflow/core/common_runtime/colocation_graph.cc:1213] Failed to place the graph without changing the devices of some resources. Some of the operations (that had to be colocated with resource generating operations) are not supported on the resources' devices. Current candidate devices are [
   /job:localhost/replica:0/task:0/device:CPU:0]. Which basically indicates that the GPU is not being detected.
   
@@ -137,12 +137,12 @@ root@d2ea70cebb96:/opt/simapp# python3 -c "import tensorflow as tf; print(tf.con
 ```
 
 ### **5. DRfC info and changes to specific files** 
-### **1. Environment Variables**  
+#### **1. Environment Variables**  
 These variables are defined in **`activate.sh`** and are essential for configuring the simulation environment.
 
-### **2. Configuration Parameters**  
+#### **2. Configuration Parameters**  
 
-#### **System-wide Configuration (`system.env`)**  
+##### **System-wide Configuration (`system.env`)**  
 These parameters control the system-level behavior of DeepRacer simulation:
 
 | Variable | Description | Default Value |
@@ -154,9 +154,9 @@ These parameters control the system-level behavior of DeepRacer simulation:
 
 ---
 
-### **3. Training-Specific Parameters (Race Track)**  
+#### **3. Training-Specific Parameters (Race Track)**  
 
-#### **Training Configuration (`run.env`)**  
+##### **Training Configuration (`run.env`)**  
 These parameters affect DeepRacer training and race track simulation:
 
 | Variable | Description | Default Value |
@@ -165,7 +165,7 @@ These parameters affect DeepRacer training and race track simulation:
 
 ---
 
-### **4. Initial Setup Script (`init.sh`)**  
+#### **4. Initial Setup Script (`init.sh`)**  
 
 *Important IP Address update in init.sh:*  
 Get message "Error response from daemon: could not choose an IP address to advertise since this system has multiple addresses on interface <your_interface> ..." when running ./bin/init.sh -c local -a cpu
@@ -183,37 +183,37 @@ bin/init.sh -a gpu -c local
 source bin/activate.sh
 ```
 
-### **4. Copy Defaults**
+#### **4. Copy Defaults**
 ```bash
 cp defaults/hyperparameters.json custom_files/
 cp defaults/model_metadata.json custom_files/
 cp defaults/reward_function.py custom_files/
 ```
 
-### **5. After changing configs in (`system.env`) or (`run.env`) **
+#### **5. After changing configs in (`system.env`) or (`run.env`) **
 ```bash
 dr-update
 ```
 
-### **6. After changing the reward function **
+#### **6. After changing the reward function **
 ```bash
 dr-upload-custom-files
 ```
 
-### **7. Train again overwriting previous training **
+#### **7. Train again overwriting previous training **
 ```bash
 dr-stop-training
 dr-start-training -w 
 ```
 
-### **8. Start the Viewer to visualize training and evaluation in browser **
+#### **8. Start the Viewer to visualize training and evaluation in browser **
 run this in a new bash:  
 ```bash
 dr-start-viewer
 dr-update-viewer
 ```
 
-### **9. useful AWS s3 config **
+#### **9. useful AWS s3 config **
 ```bash
 aws s3 ls
 ```
