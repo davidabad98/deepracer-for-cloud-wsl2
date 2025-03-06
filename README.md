@@ -96,7 +96,9 @@ nvcc --version
 ```
 
 Update NVIDIA Container Toolkit  
+
 This is to fix an issue of the awsdeepracercommunity/deepracer-simapp docker container not being able to read the GPU: tensorflow/compiler/xla/stream_executor/cuda/cuda_driver.cc:268] failed call to cuInit: CUDA_ERROR_NOT_FOUND: named symbol not found.  
+
 But this is not directly visible when running DRfC. When doing so, you will get: tensorflow/core/common_runtime/colocation_graph.cc:1213] Failed to place the graph without changing the devices of some resources. Some of the operations (that had to be colocated with resource generating operations) are not supported on the resources' devices. Current candidate devices are [
   /job:localhost/replica:0/task:0/device:CPU:0]. Which basically indicates that the GPU is not being detected.
   
