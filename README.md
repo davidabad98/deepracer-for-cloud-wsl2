@@ -13,8 +13,8 @@ It is intended for developers who want to leverage GPU computing inside Docker c
   - [1. Enable WSL2 and Install Ubuntu 20.04](#1-enable-wsl2-and-install-ubuntu-2004)  
   - [2. Install required packages](#2-install-required-packages)  
   - [3. NVIDIA Toolkit and CUDA setup](#3-nvidia-toolkit-and-cuda-setup)  
-  - [4. Install GPU deepracer image to use in Docker](#4-install-gpu-deepracer-image-to-use-in-docker)  
-  - [5. DRfC Info - Changes to specific files](#5-drfc-info-changes-to-specific-files)  
+  - [4. Install missing GPU deepracer image to use in Docker](#4-install-missing-gpu-deepracer-image-to-use-in-docker)  
+  - [5. DRfC info and changes to specific files](#5-drfc-info-and-changes-to-specific-files)  
 
 ---
 
@@ -136,7 +136,7 @@ root@d2ea70cebb96:/opt/simapp# python3 -c "import tensorflow as tf; print(tf.__v
 root@d2ea70cebb96:/opt/simapp# python3 -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
 ```
 
-### **5. DRfC Info - Changes to specific files** 
+### **5. DRfC info and changes to specific files** 
 ### **1. Environment Variables**  
 These variables are defined in **`activate.sh`** and are essential for configuring the simulation environment.
 
