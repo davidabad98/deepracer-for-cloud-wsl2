@@ -11,10 +11,10 @@ It is intended for developers who want to leverage GPU computing inside Docker c
 - [Useful Links](#useful-links)  
 - [Installation & Setup](#installation--setup)  
   - [1. Enable WSL2 and Install Ubuntu 20.04](#1-enable-wsl2-and-install-ubuntu-2004)  
-  - [2. Install NVIDIA Drivers and WSL2 Support](#2-install-nvidia-drivers-and-wsl2-support)  
-  - [3. Install Docker and NVIDIA Container Toolkit](#3-install-docker-and-nvidia-container-toolkit)  
-  - [4. Verify GPU Access in Docker](#4-verify-gpu-access-in-docker)  
-  - [5. Set Up DeepRacer for Cloud](#5-set-up-deepracer-for-cloud)
+  - [2. Install required packages](#2-install-required-packages)  
+  - [3. NVIDIA Toolkit and CUDA setup](#3-nvidia-toolkit-and-cuda-setup)  
+  - [4. Install GPU deepracer image to use in Docker](#4-install-gpu-deepracer-image-to-use-in-docker)  
+  - [5. DRfC Info - Changes to specific files](#5-drfc-info-changes-to-specific-files)  
 
 ---
 
