@@ -190,30 +190,30 @@ cp defaults/model_metadata.json custom_files/
 cp defaults/reward_function.py custom_files/
 ```
 
-#### **6. After changing configs in (`system.env`) or (`run.env`) **
+#### **6. After changing configs in (`system.env`) or (`run.env`)**
 ```bash
 dr-update
 ```
 
-#### **7. After changing the reward function **
+#### **7. After changing the reward function**
 ```bash
 dr-upload-custom-files
 ```
 
-#### **8. Train again overwriting previous training **
+#### **8. Train again overwriting previous training**
 ```bash
 dr-stop-training
 dr-start-training -w 
 ```
 
-#### **9. Start the Viewer to visualize training and evaluation in browser **
+#### **9. Start the Viewer to visualize training and evaluation in browser**
 run this in a new bash:  
 ```bash
 dr-start-viewer
 dr-update-viewer
 ```
 
-#### **10. useful AWS s3 config **
+#### **10. useful AWS s3 config**
 ```bash
 aws s3 ls
 ```
