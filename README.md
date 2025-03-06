@@ -41,7 +41,8 @@ Before proceeding, ensure you have:
 - [Helpful article #2](https://medium.com/@marsmans/how-i-got-into-the-top-2-in-aws-deepracer-32127a364212)
 - [Helpful article #3](https://docs.aws.amazon.com/deepracer/latest/developerguide/deepracer-reward-function-input.html?icmpid=docs_deepracer_console)
 - [Helpful article #4](https://medium.com/@autonomousracecarclub/visualizing-aws-deepracer-waypoints-9b94e6311b7a) *
-*models that perform in the top few spots most likely utilize the continuous action space  
+
+*_models that perform in the top few spots most likely utilize the continuous action space_  
 
 ---
 
