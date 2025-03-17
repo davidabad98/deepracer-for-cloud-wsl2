@@ -46,6 +46,10 @@ Before proceeding, ensure you have:
 
 ---
 
+- [Track Waypoints](https://github.com/aws-deepracer-community/deepracer-race-data/tree/main/raw_data/tracks)
+
+---
+
 ## **Installation & Setup**  
 
 ### **1. Enable WSL2 and Install Ubuntu 20.04**  
