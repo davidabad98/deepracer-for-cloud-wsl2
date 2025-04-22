@@ -154,7 +154,7 @@ These parameters control the system-level behavior of DeepRacer simulation:
 | Variable | Description | Default Value |
 |----------|------------|---------------|
 | `DR_SIMAPP_VERSION` | Specifies the DeepRacer simulation container version | `5.3.3-gpu` |
-| `DR_ANALYSIS_IMAGE` | Determines whether to use CPU or GPU for analysis | `gpu` |
+| `DR_ANALYSIS_IMAGE` | Determines whether to use CPU or GPU for analysis | `cpu` |
 | `DR_ROBOMAKER_MOUNT_LOGS` | Enables mounting of logs for debugging | `True` |
 | `DR_DOCKER_STYLE` | Defines Docker execution style (e.g., Swarm or Standalone) | `swarm` |
 
@@ -167,6 +167,7 @@ These parameters affect DeepRacer training and race track simulation:
 
 | Variable | Description | Default Value |
 |----------|------------|---------------|
+| `DR_WORLD_NAME` | Track ID | `reinvent_base` |
 | `DR_EVAL_SAVE_MP4` | Enables saving of evaluation runs as MP4 videos | `True` |
 
 ---
