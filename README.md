@@ -153,6 +153,7 @@ These parameters control the system-level behavior of DeepRacer simulation:
 
 | Variable | Description | Default Value |
 |----------|------------|---------------|
+| `DR_UPLOAD_S3_BUCKET` | Setup when uploading the model to AWS | `not-defined` |
 | `DR_SIMAPP_VERSION` | Specifies the DeepRacer simulation container version | `5.3.3-gpu` |
 | `DR_ANALYSIS_IMAGE` | Determines whether to use CPU or GPU for analysis | `cpu` |
 | `DR_ROBOMAKER_MOUNT_LOGS` | Enables mounting of logs for debugging | `True` |
@@ -168,18 +169,27 @@ These parameters affect DeepRacer training and race track simulation:
 | Variable | Description | Default Value |
 |----------|------------|---------------|
 | `DR_WORLD_NAME` | Track ID | `reinvent_base` |
+| `DR_LOCAL_S3_MODEL_PREFIX` | Name of the Experiment to keep track of logs | `Experiment1` |
+| `DR_LOCAL_S3_PRETRAINED` | NOnly required if training from prev experiment | `False` |
+| `DR_LOCAL_S3_PRETRAINED_PREFIX` | Only required if training from prev experiment | `Experiment0` |
+| `DR_LOCAL_S3_MODEL_METADATA_KEY` | Change for new experiments (since well have a new reward function for each) | `$DR_LOCAL_S3_CUSTOM_FILES_PREFIX/model_metadata.json` |
+| `DR_LOCAL_S3_HYPERPARAMETERS_KEY` | Change for new experiments | `$DR_LOCAL_S3_CUSTOM_FILES_PREFIX/hyperparameters.json` |
+| `DR_LOCAL_S3_REWARD_KEY` | Change for new experiments | `$DR_LOCAL_S3_CUSTOM_FILES_PREFIX/model_metadata.json` |
 | `DR_EVAL_SAVE_MP4` | Enables saving of evaluation runs as MP4 videos | `True` |
+
+Useful link for track names:  
+https://github.com/aws-deepracer-community/deepracer-race-data/tree/main/raw_data/tracks  
 
 ---
 
 #### **4. Initial Setup Script (`init.sh`)**  
 
 *Important IP Address update in init.sh:*  
-Get message "Error response from daemon: could not choose an IP address to advertise since this system has multiple addresses on interface <your_interface> ..." when running ./bin/init.sh -c local -a cpu
-It means you have multiple IP addresses and you need to specify one within ./bin/init.sh.
-If you don't care which one to use, you can get the first one by running ifconfig | grep $(route | awk '/^default/ {print $8}') -a1 | grep -o -P '(?<=inet ).*(?= netmask).
-Edit ./bin/init.sh and locate line docker swarm init and change it to docker swarm init --advertise-addr <your_IP>.
-Rerun ./bin/init.sh -c local -a cpu
+Get message "Error response from daemon: could not choose an IP address to advertise since this system has multiple addresses on interface <your_interface> ..." when running ./bin/init.sh -c local -a cpu  
+It means you have multiple IP addresses and you need to specify one within ./bin/init.sh.  
+If you don't care which one to use, you can get the first one by running ifconfig | grep $(route | awk '/^default/ {print $8}') -a1 | grep -o -P '(?<=inet ).*(?= netmask).  
+Edit ./bin/init.sh and locate line docker swarm init and change it to docker swarm init --advertise-addr <your_IP>.  
+Rerun ./bin/init.sh -c local -a cpu  
 ```bash
 ip addr
 ```
@@ -200,6 +210,7 @@ cp defaults/reward_function.py custom_files/
 #### **6. After changing configs in (`system.env`) or (`run.env`)**
 ```bash
 dr-update
+dr-update-env
 ```
 
 #### **7. After changing the reward function**
@@ -213,17 +224,24 @@ dr-stop-training
 dr-start-training -w 
 ```
 
+
 #### **9. Start the Viewer to visualize training and evaluation in browser**
 run this in a new bash:  
 ```bash
-dr-start-viewer
 dr-update-viewer
+dr-start-viewer
 ```
 
 #### **10. useful AWS s3 config**
 ```bash
 aws s3 ls
 ```
+
+
+VIEW RUNNING IMAGE: docker ps  
+VIEW CORES: htop  
+
+
 
 ## Contributing
 Feel free to contribute by submitting issues or pull requests to improve this guide.
