@@ -230,6 +230,7 @@ run this in a new bash:
 ```bash
 dr-update-viewer
 dr-start-viewer
+dr-stop-viewer
 ```
 
 #### **10. useful AWS s3 config**
@@ -241,7 +242,33 @@ aws s3 ls
 VIEW RUNNING IMAGE: docker ps  
 VIEW CORES: htop  
 
+CONTINUE TRAINING FROM LAST MODEL  
+dr-increment-training  
 
+nano ~/.bashrc  
+ADD THE EXPORT LINE  
+
+docker ps  
+docker inspect s3_minio.1.ethqdltzur00hocit7wl3barh  
+
+"MINIO_ROOT_USER=pUi3evIfsy4pm5WE"  
+"MINIO_ROOT_PASSWORD=NGg6KE7C8XqZM3Ww"  
+
+mc config host add dr http://localhost:9000 pUi3evIfsy4pm5WE NGg6KE7C8XqZM3Ww  
+
+mc ls dr/  
+
+mc cp --recursive dr/ .
+
+Model will be found in bucket/Experiment3/output  
+
+http://172.30.67.131:9001/login 
+
+Saving Evaluation to File  
+During evaluation (dr-start-evaluation), if DR_EVAL_SAVE_MP4=True then three MP4 files are created in the S3 bucket's MP4 folder. They contain the in-car camera, top-camera and the camera following the car.  
+
+run this everytime new files are added!!  
+mc cp --recursive dr/ .  
 
 ## Contributing
 Feel free to contribute by submitting issues or pull requests to improve this guide.
