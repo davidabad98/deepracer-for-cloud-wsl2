@@ -272,5 +272,8 @@ dr-stop-evaluation
 run this everytime new files are added!!  
 mc cp --recursive dr/ .  
 
+https://medium.com/@yangkewenvigorous/enhancing-your-aws-deepracer-performance-with-gradient-descent-algorithm-and-personalized-waypoints-2e5db6ceab63  
+https://github.com/yang0369/AWS_DeepRacer/blob/main/reward_function(1.5).py  
+
 ## Contributing
 Feel free to contribute by submitting issues or pull requests to improve this guide.
