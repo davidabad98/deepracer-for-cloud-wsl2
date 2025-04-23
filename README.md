@@ -267,6 +267,8 @@ http://172.30.67.131:9001/login
 Saving Evaluation to File  
 During evaluation (dr-start-evaluation), if DR_EVAL_SAVE_MP4=True then three MP4 files are created in the S3 bucket's MP4 folder. They contain the in-car camera, top-camera and the camera following the car.  
 
+dr-stop-evaluation  
+
 run this everytime new files are added!!  
 mc cp --recursive dr/ .  
 
